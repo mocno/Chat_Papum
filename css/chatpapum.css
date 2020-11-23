@@ -1,0 +1,92 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito');
+
+#containerMessages {
+  width: 20%;
+  height: 75%;
+  right: 30px;
+  bottom: 10px;
+
+  background-color: #ccddff;
+  border-radius: 10px;
+  position: fixed;
+  overflow: hidden;
+  font: 13px 'Nunito', sans-serif;
+}
+
+#containerMessages div.messageHUD {
+  background: #4488ff;
+  padding: 5px;
+  width: 100%;
+  color: #fff;
+}
+
+#containerMessages div#messageHeader {
+  height: 50px;
+  font-size: 25px;
+}
+
+#containerMessages div#messageInputs {
+  position: absolute;
+  bottom: 0;
+}
+
+#containerMessages div.messageHUD input {
+  border: none;
+  border-radius: 0 0 0 10px;
+  padding: 10px 12px;
+  outline: none;
+}
+
+#containerMessages div.messageHUD input#messageText {
+  width: 80%;
+}
+#containerMessages div.messageHUD button#messageSend {
+  background: none;
+  border: none;
+  outline: none;
+  vertical-align: middle;
+}
+
+#containerMessages ul#messages {
+  list-style-type: none;
+  padding: 0 10px;
+  overflow: auto;
+  height: 100%;
+  margin: 0;
+}
+
+#containerMessages ul#messages li {
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  word-break: break-word;
+}
+
+#containerMessages ul#messages li.messageMy {
+  background: #70a9ff;
+  text-align: right;
+  border-radius: 10px 0 10px 10px;
+  margin-left: 15%;
+}
+#containerMessages ul#messages li.messageYour {
+  background: #aaccff;
+  margin-right: 15%;
+  border-radius: 0 10px 10px;
+}
+
+#containerMessages ::-webkit-scrollbar {
+  width: 10px;
+}
+
+#containerMessages ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+#containerMessages ::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+#containerMessages ::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
