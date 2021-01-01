@@ -7,18 +7,10 @@ const mongodb = require("mongodb");
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  res.sendFile(__dirname + "/front/html/index.html");
 });
 
-app.get("/css/*", (req, res) => {
-  res.sendFile(__dirname + req.url);
-});
-
-app.get("/js/*", (req, res) => {
-  res.sendFile(__dirname + req.url);
-});
-
-app.get("/text/*", (req, res) => {
+app.get("/front/*", (req, res) => {
   res.sendFile(__dirname + req.url);
 });
 
