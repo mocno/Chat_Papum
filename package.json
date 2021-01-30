@@ -1,7 +1,7 @@
 {
   "name": "socket-chat-papum",
   "version": "0.0.1",
-  "description": "Meu primeiro socket.io app",
+  "description": " Um Sistema de chat em paginas Web",
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.6",
