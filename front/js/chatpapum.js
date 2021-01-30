@@ -1,26 +1,12 @@
-var socket = io();
-
-document.querySelector("#containerMessages").innerHTML =
-  '<div class="messageHUD" id="messageHeader">Chat Papum:</div><ul id="messages"></ul><div class="messageHUD" id="messageInputs"><input id="messageText" autocomplete="off" placeholder="Digite uma mensagem" /><button id="messageSend" onclick="sendMessage();"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bdd7ff" width="25px" height="25px"><path d="M0 0h24v24H0z" fill="none" /><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div>';
-
-document.querySelector("#containerMessages").setAttribute("class", "");
-
-messageText = document.querySelector("#messageText");
-messages = document.querySelector("#messages");
-
-messageText.addEventListener("keydown", function (e) {
-  if (e.which == 13) {
-    sendMessage();
-  }
-});
+"use strict";
 
 function sendMessage() {
-  if (messageText.value == "") return;
-  socket.emit("message", messageText.value);
-  messageText.value = "";
+  if (messageInput.value == "") return;
+  socket.emit("message", messageInput.value);
+  messageInput.value = "";
 }
 
-socket.on("message", function (msg, id, name) {
+function drawMessage(msg, id, name) {
   if (id == socket.id) {
     messages.innerHTML += "<li class='messageMy'>" + msg + "</li>";
   } else {
@@ -31,4 +17,25 @@ socket.on("message", function (msg, id, name) {
       msg +
       "</li>";
   }
-});
+}
+
+function initMessages (innerHTML) {
+  var containerMessages = document.querySelector("#containerMessages");
+
+  containerMessages.innerHTML = innerHTML;
+  containerMessages.classList = "";
+  
+  var messageInput = document.querySelector("#messageInput");
+  var messages = document.querySelector("#messages");
+
+  messageInput.addEventListener("keydown", function (e) {
+    if (e.which == 13) {
+      sendMessage();
+    }
+  });
+}
+
+var socket = io();
+
+socket.on("init", initMessages);
+socket.on("message", drawMessage);
