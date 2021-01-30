@@ -2,7 +2,13 @@
 
 #containerMessages {
   width: 20%;
+
   max-width: 350px;
+  min-width: 240px;
+
+  max-height: 40vw;
+  min-height: 400px;
+
   height: 75%;
   right: 30px;
   bottom: 10px;
@@ -15,7 +21,10 @@
 }
 
 #containerMessages.jsDisaccept {
-  height: 100px;
+  height: 70px;
+  min-height: auto;
+  padding: 25px;
+  font-size: 18px;
 }
 
 #containerMessages div.messageHUD {
