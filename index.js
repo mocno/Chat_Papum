@@ -3,7 +3,6 @@
 const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const mongodb = require("mongodb");
 const port = 3000;
 
 app.get("/", (req, res) => {
