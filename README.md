@@ -1,7 +1,9 @@
 # Chat_Papum
+
 Chat_Papum: Um Sistema de chat em paginas Web na tecnologia NodeJs e Socket.IO
 
 # Para executar
+
 ## Iniciando as dependências
 
 - [ ] Instalar [**Node.js**](//nodejs.org)
@@ -11,4 +13,4 @@ Chat_Papum: Um Sistema de chat em paginas Web na tecnologia NodeJs e Socket.IO
 
 ## Colocando o servidor para rodar
 
-- [ ] Executar: `nodemom index.js`
+- [ ] Executar: `nodemon index.js`
