@@ -3,18 +3,17 @@
 const app = require("express")();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/front/html/index.html");
-});
+// Remover quando possível
+const initHTML = '<div class="messageHUD" id="messageHeader">Chat Papum:</div> <ul id="messages"></ul> <div class="messageHUD" id="messageInputs"> <input id="messageInput" autocomplete="off" placeholder="Digite uma mensagem" /> <button id="messageSend" onclick="sendMessage();"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#bdd7ff" width="25px" height="25px" > <path d="M0 0h24v24H0z" fill="none" /> <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" /> </svg> </button> </div>';
 
-app.get("/front/*", (req, res) => {
-  res.sendFile(__dirname + req.url);
-});
-
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   console.log(`Usuario (${socket.id}) se conectou`);
+
+  socket.join(socket.id);
+
+  io.to(socket.id).emit("init", initHTML);
 
   socket.on("disconnect", () => {
     console.log(`Usuario (${socket.id}) se desconectou`);
@@ -23,8 +22,17 @@ io.on("connection", (socket) => {
   socket.on("message", (msg) => {
     io.emit("message", msg, socket.id, "Bruna");
 
-    console.log(`mensagem de ${socket.id}: ${msg}`);
+    console.log(`Mensagem de ${socket.id}: ${msg}`);
   });
+});
+
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/front/html/index.html");
+});
+
+app.get("/front/*", (req, res) => {
+  res.sendFile(__dirname + req.url);
 });
 
 http.listen(port, () => {
