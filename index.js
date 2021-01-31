@@ -28,10 +28,10 @@ io.on("connection", async (socket) => {
 
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/front/html/index.html");
+  res.sendFile(__dirname + "/public/html/index.html");
 });
 
-app.get("/front/*", (req, res) => {
+app.get("/public/*", (req, res) => {
   res.sendFile(__dirname + req.url);
 });
 
